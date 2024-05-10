@@ -1,44 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Nav, NavItem,NavLink   } from 'reactstrap';
+import Header from "./Components/Header/Header";
+import "./App.css";
 function App() {
-
-
   return (
-<Nav
-  fill
-  pills
->
-  <NavItem>
-    <NavLink
-      active
-      href="#"
-    >
-      Link
-    </NavLink>
-  </NavItem>
-  <NavItem>
-    <NavLink href="#">
-      Much Longer Nav Link
-    </NavLink>
-  </NavItem>
-  <NavItem>
-    <NavLink href="#">
-      Another Link
-    </NavLink>
-  </NavItem>
-  <NavItem>
-    <NavLink
-      disabled
-      href="#"
-    >
-      Disabled Link
-    </NavLink>
-  </NavItem>
-</Nav>
-  )
+    <>
+      <Header color='dark' light={true} dark={true} expand='md' container='sm' fixed='top' />
+    </>
+  );
 }
 
-export default App
+export default App;
