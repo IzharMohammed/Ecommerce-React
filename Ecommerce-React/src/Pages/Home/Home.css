@@ -1,0 +1,40 @@
+.main-heading {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5rem;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products {
+    box-shadow: 4px 4px 2px var(--mid-gray);
+    margin: 42px;
+    padding: 20px;
+    font-size: 23px;
+    border-radius: 17px;
+    background-color: gray;
+    transition: all 0.4s;
+}
+
+.products a {
+    color: white;
+    text-decoration: none;
+}
+
+.products:hover {
+    box-shadow: 0px 0px;
+    transform: translateX(12px);
+}
+
+.product-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
