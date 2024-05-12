@@ -1,14 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import axios from "axios"
+import  { getAllCategories } from "../../Apis/FakeStoreProdApis"
 
 export default function CategoryItems({ itemname }) {
+const[categories,setCategories] = useState('');
+const fetchData = async () => {
+const response = await axios.get(getAllCategories())
+console.log(response.data);
+setCategories(response.data);
+}
+
+
+useEffect (()=>{
+fetchData()
+},[])
+
   return (
-    <>
+   <>
       <div className="product-container">
-        <div class="products">
-          <Link to="/product">Electronics</Link>
-        </div>
+    {
+      categories.length>0 ?
+     (
+        categories.map((category)=>(
+          <div class="products">
+          <Link to="/product">{category}</Link>
+          </div>
+        ))
+       )
+      : (
+        <div>Loading ........</div>
+      )
+    }
       </div>
-    </>
+    </> 
   );
 }

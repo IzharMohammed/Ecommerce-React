@@ -33,13 +33,13 @@
     align-items: flex-start;
     font-size: 1.5rem;
     margin: 30px 0px;
-    padding: 32px;
+/*     padding: 32px; */
     gap: 15px;
   }
   
   .products1 {
     border: 3px solid #2bf0e9;
-    padding: 17px 38px;
+    padding: 11px 79px;
     background-color: #2bf0e9;
     border-radius: 19px;
     cursor: pointer;
@@ -58,14 +58,15 @@
   }
   
   .heading2 {
-    font-size: 1.9rem;
-    margin-left: 45px;
+    font-size: 2.5rem;
+    margin-left: 17px;
+    letter-spacing: 3px;
   }
   
   .buttons {
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    max-width: 50%;
     gap: 17px;
     margin-left: 46px;
   }
@@ -81,10 +82,14 @@
   .container {
     display: flex;
     flex-direction: row;
+    margin-left: 5rem;
+    margin-right: 0px;
+    gap: 9px;
   }
   
   .product-list-box {
-    flex-basis: 80%;
+
+/*     flex-basis: 80%; */
   }
   
   .product-list-item {

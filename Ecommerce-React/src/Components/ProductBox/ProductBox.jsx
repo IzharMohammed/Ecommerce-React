@@ -1,19 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { getAllProducts } from "../../Apis/FakeStoreProdApis";
 
 export default function ProductBox({name , price}){
+  const[products,setProducts] = useState([]);
+
+const fetchAllProducts = async () =>{
+ const response =  await axios.get(getAllProducts())
+ setProducts(response.data)
+ console.log(products);
+}
+
+
+useEffect(()=>{
+  fetchAllProducts();
+},[])
+
+
     return(
         <>
-        <Link to="/productDetails" className="product-list-item">
-        <div className="imgDiv">
-          <img
-            src="https://th.bing.com/th/id/OIP.qZ22ZrAVSKLRbjX5qyAgigHaEf?w=291&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
-            alt=""
-          />
-        </div>
-        <div className="product-name">{name}</div>
-        <div className="product-price">&#8377; {price}</div>
-      </Link>
+        
+          {
+        products.length>0 ? (
+            products.map((product)=>(
+            <Link to="/productDetails" className="product-list-item">
+            <div className="imgDiv">
+              <img
+                src={product.image}
+              />
+            </div>
+            <div className="product-name">{product.title}</div>
+            <div className="product-price">&#8377; {product.price}</div>
+          </Link>
+            ))
+          ) : (
+            <div>Loading ...</div>
+          )
+        }
+        
         </>
     )
 }
