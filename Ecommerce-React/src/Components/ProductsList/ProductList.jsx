@@ -1,11 +1,10 @@
 import React from "react";
 import './ProductList.css'
 import { Link } from "react-router-dom";
+import FilterProducts from "../FilterProducts/FilterProducts";
 export default function ProductList() {
   return (
     <>
-
-
   <h1 className="heading">All Products</h1>  
 <div className="container">
 <div className="Lists">
@@ -24,25 +23,8 @@ export default function ProductList() {
  <div className="products1"><a href="productList.html?category=women's clothing">women's clothing</a></div>
 </div>
 
-<div className="ranges">
-    <select name='min-price' class="min-range" id="min-price">
-        <option value="0">0</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="200">200</option>
-    </select>
-        <select name='max-price' class="max-price" id="max-price">
-          <option value="0">0</option>
-         <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-         <option value="100">100</option>
-        <option value="200">200</option>
-         <option value="1000">1000</option>
-            </select>
-</div>
+<FilterProducts />
+
 <div className="buttons">
 <button className="search" id="search">Search</button>
 <button className="search">Clear Filters</button>
