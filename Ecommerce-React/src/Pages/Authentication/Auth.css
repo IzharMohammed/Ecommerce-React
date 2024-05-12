@@ -1,0 +1,68 @@
+.column1 {
+    border: 2px solid #d4edf0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    margin: 15rem 0rem 0rem 26rem;
+    box-shadow: 10px 10px 3px whitesmoke;
+
+}
+
+.heading1 {
+    font-size: 2.2rem;
+    letter-spacing: 4px;
+}
+
+.heading2 {
+    font-size: 2rem;
+    margin-left: -49px;
+    letter-spacing: 3px;
+}
+
+.inputs1 {
+    display: flex;
+    flex-direction: column;
+    width: 11.875rem;
+    gap: 19px;
+    margin-left: -126px;
+}
+
+.lastDiv1 {
+    margin-bottom: 50px;
+   
+}
+
+.username1 {
+    font-size: 20px;
+    padding: 8px;
+    padding-left: 30px;
+    text-decoration: none;
+    border-radius: 15px;
+    width: 15.125rem;
+    border: none;
+    border-bottom: 2px solid;
+    outline: none;
+}
+
+.button {
+    font-size: 19px;
+    padding: 7px;
+    margin-left: 70px;
+    margin-bottom: 50px;
+    background-color: #9b45e6;
+    border-radius: 10px;
+    box-shadow: 0px 5px 6px black;
+    transition: all 0.4s;
+}
+
+button:hover {
+    box-shadow: 0px 0px;
+}
+
+
+
+.container1 {
+    margin-top: -7rem;
+}
