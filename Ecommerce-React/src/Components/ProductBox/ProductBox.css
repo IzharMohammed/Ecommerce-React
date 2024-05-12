@@ -1,0 +1,38 @@
+.product-list-item {
+    max-width: 11%;
+    display: inline-block;
+    max-width: 24%;
+    width: 400px;
+    height: 390px;
+    margin: 47px;
+    text-decoration: none;
+    transition: all 0.4s;
+    box-shadow: 5px 7px 2px whitesmoke;
+  }
+  
+  .product-list-item:hover {
+    box-shadow: 0px 0px 0px wheat;
+    transform: translateY(-10px);
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .imgDiv {
+    height: 300px;
+  }
+  
+  .product-name {
+    font-size: 26px;
+    margin-left: 40px;
+    color: rgb(71, 120, 98);
+  }
+  
+  .product-price {
+    font-size: 26px;
+    margin-left: 40px;
+    color: rgb(71, 120, 98);
+  }
+  
