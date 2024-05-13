@@ -3,8 +3,10 @@ import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios"
 import  { getAllCategories } from "../../Apis/FakeStoreProdApis"
 
-export default function CategoryItems({ itemname }) {
+export default function CategoryItems() {
 const[categories,setCategories] = useState('');
+
+
 const fetchData = async () => {
 const response = await axios.get(getAllCategories())
 console.log(response.data);
@@ -24,7 +26,7 @@ fetchData()
      (
         categories.map((category)=>(
           <div class="products">
-          <Link to="/product">{category}</Link>
+          <Link to={`/product?category=${category}`}>{category}</Link>
           </div>
         ))
        )

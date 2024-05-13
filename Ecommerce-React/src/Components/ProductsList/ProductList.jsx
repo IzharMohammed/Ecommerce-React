@@ -42,7 +42,7 @@ export default function ProductList() {
         </div>
 
         <div className="product-list-box" id="productList">
-      <ProductBox  name={'some Product'} price = {10000} />
+      <ProductBox  />
         </div>
       </div>
     </>

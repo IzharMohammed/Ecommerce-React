@@ -20,7 +20,6 @@ export default function MainRoutes(){
 <Route  path="productDetails" element={<ProductDetails/>}   />
 <Route  path="Login" element={<Login/>}   />
 <Route  path="SignUp" element={<SignUp/>}   />
-
 </Routes>
 
 </>
