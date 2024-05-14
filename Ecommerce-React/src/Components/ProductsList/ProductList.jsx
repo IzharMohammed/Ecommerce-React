@@ -1,8 +1,19 @@
+//React imports
 import React from "react";
-import "./ProductList.css";
+
+//Component imports
 import FilterProducts from "../FilterProducts/FilterProducts";
 import ProductBox from "../ProductBox/ProductBox";
+
+//CSS imports
+import "./ProductList.css";
+
+//Custom hook import
+import useCategoryItems from "../../Hooks/useCategoryItems";
+
 export default function ProductList() {
+  const categories = useCategoryItems();
+
   return (
     <>
       <h1 className="heading">All Products</h1>
@@ -13,22 +24,13 @@ export default function ProductList() {
           <div className="heading2">Categories</div>
 
           <div className="categoryList" id="categoryList">
-            <div className="products1">
-              <a href="productList.html?category=electronics">Electronics</a>
-            </div>
-            <div className="products1">
-              <a href="productList.html?category=jewelery">jewelery</a>
-            </div>
-            <div className="products1">
-              <a href="productList.html?category=men's clothing">
-                men's clothing
-              </a>
-            </div>
-            <div className="products1">
-              <a href="productList.html?category=women's clothing">
-                women's clothing
-              </a>
-            </div>
+            {categories &&
+              categories.map((category) => (
+                <div key={category} className="products1">
+                  <a href="productList.html?category=electronics">{category}</a>
+                </div>
+              ))}
+
           </div>
 
           <FilterProducts />
@@ -42,7 +44,7 @@ export default function ProductList() {
         </div>
 
         <div className="product-list-box" id="productList">
-      <ProductBox  />
+          <ProductBox />
         </div>
       </div>
     </>
