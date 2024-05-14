@@ -10,7 +10,6 @@ export default function useCategoryItems() {
 
   const fetchData = async () => {
     const response = await axios.get(getAllCategories());
-    console.log(response.data);
     setCategories(response.data);
   };
 

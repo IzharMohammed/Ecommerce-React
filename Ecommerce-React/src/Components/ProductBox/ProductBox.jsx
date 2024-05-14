@@ -16,7 +16,7 @@ export default function ProductBox() {
 
   useEffect(() => {
     fetchAllProducts(query.get("category"));
-  }, []);
+  }, [query.get("category")]);
 
   return (
     <div key={products.id}>

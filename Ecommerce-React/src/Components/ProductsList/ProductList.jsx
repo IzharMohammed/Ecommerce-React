@@ -1,5 +1,6 @@
 //React imports
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 //Component imports
 import FilterProducts from "../FilterProducts/FilterProducts";
@@ -13,6 +14,8 @@ import useCategoryItems from "../../Hooks/useCategoryItems";
 
 export default function ProductList() {
   const categories = useCategoryItems();
+  const navigate = useNavigate()
+
 
   return (
     <>
@@ -26,8 +29,8 @@ export default function ProductList() {
           <div className="categoryList" id="categoryList">
             {categories &&
               categories.map((category) => (
-                <div key={category} className="products1">
-                  <a href="productList.html?category=electronics">{category}</a>
+                <div onClick={()=> navigate(`?category=${category}`)} key={category} className="products1">
+                  <a>{category}</a>
                 </div>
               ))}
 
