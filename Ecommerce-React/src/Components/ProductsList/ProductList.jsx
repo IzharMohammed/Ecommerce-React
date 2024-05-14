@@ -13,7 +13,7 @@ import "./ProductList.css";
 import useCategoryItems from "../../Hooks/useCategoryItems";
 
 export default function ProductList() {
-  const categories = useCategoryItems();
+  const [categories] = useCategoryItems();
   const navigate = useNavigate()
 
 

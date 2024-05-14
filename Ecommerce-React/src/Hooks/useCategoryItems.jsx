@@ -6,16 +6,18 @@ import axios from "axios";
 import { getAllCategories } from "../Apis/FakeStoreProdApis";
 
 export default function useCategoryItems() {
-  const [categories, setCategories] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const fetchData = async () => {
+    console.log(getAllCategories());
     const response = await axios.get(getAllCategories());
     setCategories(response.data);
+    console.log(response);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return categories;
+  return [categories];
 }
