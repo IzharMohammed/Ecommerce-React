@@ -1,35 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
+import { getProductById } from "../../Apis/FakeStoreProdApis";
 export default function ProductDetails() {
+  const[product,setProduct] = useState(null);
+const [query] = useSearchParams()
+ 
+const fetchProductById = async (id)=>{
+  const response = await axios(getProductById(id))
+  console.log(response.data);
+  setProduct(response.data)
+}
+
+useEffect(()=>{
+  fetchProductById(query.get("id"))
+},[])
+
+
   return (
     <>
+    {
+      product && 
       <div class="productDetails-wrapper" id="productDetails-wrapper">
-        <div class="productDetails-img">
-          <img
-            src="https://th.bing.com/th/id/OIP.qZ22ZrAVSKLRbjX5qyAgigHaEf?w=291&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
-            alt=""
-          />
-        </div>
-        <div class="test">
-          <div class="productDetails">
-            <h2 class="product-description-heading">Some Product</h2>
-            <div class="product-description-amt">&#8377; 10000</div>
-            <div class="product-description-title">Description</div>
-            <div class="product-description-data">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-              debitis culpa voluptatibus natus distinctio quisquam in vero autem
-              impedit quo! Vitae sunt debitis ex quaerat eveniet nobis at
-              nesciunt dolorum.
-            </div>
-            <div class="buttons">
-              <button class="button1">Add to cart</button>
-            </div>
-            <a href="#" class="button2">
-              Go to cart
-            </a>
+      <div class="productDetails-img">
+        <img
+          src={product.image}
+        />
+      </div>
+      <div class="test">
+        <div class="productDetails">
+          <h2 class="product-description-heading">{product.title}</h2>
+          <div class="product-description-amt">&#8377; {product.price}</div>
+          <div class="product-description-title">Description</div>
+          <div class="product-description-data">
+          {product.description}
           </div>
+          <div class="buttons">
+            <button class="button1">Add to cart</button>
+          </div>
+          <a href="#" class="button2">
+            Go to cart
+          </a>
         </div>
       </div>
+    </div>
+    }
     </>
   );
 }
