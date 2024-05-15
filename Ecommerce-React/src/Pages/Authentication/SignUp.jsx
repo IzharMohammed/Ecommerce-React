@@ -1,8 +1,14 @@
+//React imports
 import React, { useEffect, useState } from "react";
-import './Auth.css'
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+//Api import
 import { signUp } from "../../Apis/FakeStoreProdApis";
+//Toast import
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//CSS import
+import './Auth.css'
 
 
 export default function SignUp(){
@@ -33,6 +39,9 @@ function updateUserName(newUsername){
       })
    navigate('/Login') 
     } catch (error) {
+      toast.error('Server is off', {
+        theme: 'dark', // Apply dark theme
+      });
       console.log(error);
       setResetSignupform(true)
     }
@@ -58,6 +67,7 @@ function updateUserName(newUsername){
           <input onChange={(e)=>updateUserName(e.target.value)} value={formDetails.username} type="text" className="username1" placeholder="Username" />
           <input onChange={(e)=>updateEmail(e.target.value)} value={formDetails.email} type="email" className="username1" placeholder="email" />
           <input onChange={(e)=>updatePassword(e.target.value)} value={formDetails.password} type="password" className="username1" placeholder="password" />
+          <ToastContainer />
           <button onClick={onFormSubmit}  class="btn btn-primary button" type="button" disabled={formDetails.isLoading} >
                    {(formDetails.isLoading) && <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>}
                    {(formDetails.isLoading) ? 'Loading ...'  : 'Submit'}
