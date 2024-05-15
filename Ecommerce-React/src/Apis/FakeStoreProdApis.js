@@ -7,9 +7,13 @@ export function getAllProducts(){
 }
 
 export function getAllProductsByCategory(category){
-    return `${import.meta.env.VITE_FAKE_STORE_URL}/products/category/${category}`
+    return `C/products/category/${category}`
 }
 
 export function getProductById(id){
     return `https://fakestoreapi.com/products/${id}`
+}
+
+export function signUp(){
+    return `${import.meta.env.VITE_FAKE_STORE_URL}/users`
 }
