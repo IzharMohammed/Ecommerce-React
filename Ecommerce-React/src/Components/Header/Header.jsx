@@ -14,10 +14,12 @@ import {
   DropdownItem ,
   NavbarText,
 } from 'reactstrap';
+import { useCookies } from 'react-cookie';
 
 function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const[token , setToken , removeToken] = useCookies(['jwt-token']);
+  console.log('token is ', token);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -37,7 +39,12 @@ function Header(props) {
                 <DropdownItem>Option 2</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  <Link to='/Login'>Logout</Link>
+                  {
+                      token['jwt-token'] ? 
+                      <Link onClick={()=>removeToken('jwt-token')} to='/Login'>Logout</Link> :
+                      <Link to='/Login'>Signin</Link>
+                  }
+                 
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
