@@ -161,11 +161,11 @@
     --light-gray: #ccc;
 }
 
-.row {
+/* .row {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .products {
     box-shadow: 4px 4px 2px var(--mid-gray);

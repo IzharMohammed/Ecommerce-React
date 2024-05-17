@@ -36,7 +36,7 @@ const navigate = useNavigate()
         password : formDetails.password , 
         username : formDetails.username
       })
-      setToken('jwt-token',response.data.token)
+      setToken('jwt-token',response.data.token,{httpOnly: true})
       console.log('Server response:', response.data.token);
    navigate('/') 
     } catch (error) {

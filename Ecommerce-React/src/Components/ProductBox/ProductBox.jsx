@@ -12,7 +12,7 @@ export default function ProductBox() {
   const fetchAllProducts = async (category) => {
     const downloadUrl = category ? getAllProductsByCategory(category ): getAllProducts()
     const response = await axios.get(downloadUrl);
-    console.log(response.data);
+    console.log('idhar',response);
     setProducts(response.data);
     console.log(response.data);
   };

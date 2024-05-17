@@ -8,7 +8,7 @@ import ProductList from "../Components/ProductsList/ProductList";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
-
+import Carts from "../Pages/Carts/Carts";
 export default function MainRoutes(){
  return(
 <>
@@ -20,6 +20,7 @@ export default function MainRoutes(){
 <Route  path="productDetails" element={<ProductDetails/>}   />
 <Route  path="Login" element={<Login/>}   />
 <Route  path="SignUp" element={<SignUp/>}   />
+<Route path="cart" element={<Carts/>} />
 </Routes>
 
 </>

@@ -7,7 +7,7 @@ export function getAllProducts(){
 }
 
 export function getAllProductsByCategory(category){
-    return `C/products/category/${category}`
+    return `${import.meta.env.VITE_FAKE_STORE_URL}/products/category/${category}`
 }
 
 export function getProductById(id){
