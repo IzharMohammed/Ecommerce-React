@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { getProductById } from "../../Apis/FakeStoreProdApis";
+
 export default function ProductDetails() {
   const[product,setProduct] = useState(null);
 const [query] = useSearchParams()
@@ -39,9 +40,8 @@ useEffect(()=>{
           <div class="buttons">
             <button class="button1">Add to cart</button>
           </div>
-          <a href="#" class="button2">
-            Go to cart
-          </a>
+          <Link to='/cart' class="button2">Go to cart</Link>
+    
         </div>
       </div>
     </div>
