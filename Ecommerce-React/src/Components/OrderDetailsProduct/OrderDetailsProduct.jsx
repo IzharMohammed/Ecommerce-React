@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function OrderDetailsProduct() {
+export default function OrderDetailsProduct({id , quantity}) {
+  console.log('id',id);
+  console.log('quantity',quantity);
   return (
     <>
       <div class="row1">
@@ -10,6 +12,7 @@ export default function OrderDetailsProduct() {
             src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
             alt=""
           />
+          <div>{id}</div>
         </div>
 
         <div class="Product-price" id="Product-price">

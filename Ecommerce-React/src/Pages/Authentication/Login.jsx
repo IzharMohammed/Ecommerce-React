@@ -1,18 +1,25 @@
 //React imports
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+//CSS imports
 import './Auth.css'
-
+//React imports
 import {  toast } from 'react-toastify';
 import axios from "axios";
-import { signin } from "../../Apis/FakeStoreProdApis";
 import { useCookies } from "react-cookie";
+//API imports
+import { signin } from "../../Apis/FakeStoreProdApis";
+//Context imports
+import { userContext } from "../../Components/context/UserContext";
+import jwt_decode from "jwt-decode";
 
 export default function Login(){
   const[formDetails , setFormDetails] = useState({email : "" , username : "" , password : "" , isLoading : false})
   const[token , setToken , removeToken] = useCookies(['jwt-token']);
-const navigate = useNavigate()
+const navigate = useNavigate();
+
+const {setUserToken} = useContext(userContext)
+
   function updateEmail(newEmail){
     setFormDetails({...formDetails , email : newEmail})
   }
@@ -36,7 +43,8 @@ const navigate = useNavigate()
         password : formDetails.password , 
         username : formDetails.username
       })
-      setToken('jwt-token',response.data.token,{httpOnly: true})
+      setUserToken(response.data.token)
+      setToken('jwt-token',response.data.token)
       console.log('Server response:', response.data.token);
    navigate('/') 
     } catch (error) {

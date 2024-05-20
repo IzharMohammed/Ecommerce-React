@@ -1,6 +1,5 @@
 import Header from "./Components/Header/Header";
 import "./App.css";
-import Home from "./Pages/Home/Home.jsx";
 import MainRoutes from "./Routes/MainRoutes.jsx";
 
 function App() {

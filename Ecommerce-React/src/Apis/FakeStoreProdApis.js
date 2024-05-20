@@ -21,3 +21,11 @@ export function signUp(){
 export function signin(){
     return   `${import.meta.env.VITE_FAKE_STORE_URL}/auth/login`
 }
+
+export function addNewProduct(){
+    return  `${import.meta.env.VITE_FAKE_STORE_URL}/carts`
+}
+
+export function getUserCart(id){
+    return `${import.meta.env.VITE_FAKE_STORE_URL}/carts/user/${id}`
+}

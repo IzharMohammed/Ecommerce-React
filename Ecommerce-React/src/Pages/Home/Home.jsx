@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import CategoryItems from "../../Components/CategoryItems/CategoryItems";
+
 export default function Home() {
   return (
     <>
