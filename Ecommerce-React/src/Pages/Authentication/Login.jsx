@@ -11,14 +11,15 @@ import { useCookies } from "react-cookie";
 import { signin } from "../../Apis/FakeStoreProdApis";
 //Context imports
 import { userContext } from "../../Components/context/UserContext";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
+
 
 export default function Login(){
   const[formDetails , setFormDetails] = useState({email : "" , username : "" , password : "" , isLoading : false})
   const[token , setToken , removeToken] = useCookies(['jwt-token']);
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-const {setUserToken} = useContext(userContext)
+const {user,setUser} = useContext(userContext);
 
   function updateEmail(newEmail){
     setFormDetails({...formDetails , email : newEmail})
@@ -35,18 +36,21 @@ const {setUserToken} = useContext(userContext)
 
   async function onFormSubmit () {
     const apiEndpoint = signin();
-    console.log('API Endpoint:', apiEndpoint);
    
     try {
       const response = await axios.post(signin() , {
         email : formDetails.email,
         password : formDetails.password , 
         username : formDetails.username
-      })
-      setUserToken(response.data.token)
-      setToken('jwt-token',response.data.token)
+      },{withCredentials : true});
+      const decoded = jwtDecode(response.data.token);
+      setToken('jwt-token',response.data.token,{httpOnly: true});
+      setUser({username : decoded.user , id : decoded.id})
+        navigate('/') ;
+        
+      console.log('token details :', tokenDetails);
+      console.log('user',user);
       console.log('Server response:', response.data.token);
-   navigate('/') 
     } catch (error) {
       toast.error('Server is off', {
         theme: 'dark', // Apply dark theme

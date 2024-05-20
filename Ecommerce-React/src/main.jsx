@@ -6,10 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import UserContextProvider from "./Components/context/UserContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-{/*       <App /> */}
-<UserContextProvider>
-        <App />
-      </UserContextProvider>
-    ,
+    {/*       <App /> */}
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
   </BrowserRouter>
 );
