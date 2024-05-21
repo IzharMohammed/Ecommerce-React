@@ -7,49 +7,11 @@ import "./Carts.css";
 //component imports
 import OrderDetailsProduct from "../../Components/OrderDetailsProduct/OrderDetailsProduct";
 //API imports
-import { getUserCart } from "../../Apis/FakeStoreProdApis";
-import { getProductById } from "../../Apis/FakeStoreProdApis";
-//JWT token import
-import { jwtDecode } from "jwt-decode";
-
 
 export default function Carts() {
 
 const[productDetails,setProductDetails] = useState([]);
-const[cart,setCart] = useState([]);
 
-const {userToken} = useContext(userContext)
-const decoded = jwtDecode(userToken);
-console.log('Decoded token is :', decoded);
-
-
-const  getUserCartFunc = async ()=>{
-const response = await axios.get(getUserCart(decoded.id));
-setCart(response.data[0].products);
-console.log('yaha ', response.data[0].products);
-const id = response.data[0].products[0].productId;
-console.log(response.data[0].products[0].productId);
-console.log(response.data[0].products[0].quantity);
-return id ;
-}
-
-const getProduct = async (id) =>{
-  const response = await axios.get(getProductById(id));
-  setProductDetails(response.data);
-
-}
-
-useEffect(()=>{
-const fetchData = async ()=>{
- const id =  await getUserCartFunc()
- console.log(id);
-getProduct(id);
-}
-fetchData()
-  getProduct()
-},[])
-
-console.log('details',productDetails);
 
   
   return (
@@ -60,13 +22,14 @@ console.log('details',productDetails);
             <h2 class="heading2">OrderDetails</h2>
             <hr />
 
-        {
-          cart && 
-          cart.map((cart)=>{
-            <OrderDetailsProduct id={cart.productId} quantity={cart.quantity}/>
+        
 
-          })
-        }
+        <OrderDetailsProduct  />
+                      
+     
+      
+            
+
 
 
           </div>

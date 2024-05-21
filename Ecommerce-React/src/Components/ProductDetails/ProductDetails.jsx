@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ProductDetails.css";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { getProductById } from "../../Apis/FakeStoreProdApis";
 import { userContext } from "../context/UserContext";
-import { jwtDecode } from "jwt-decode";
 import { addNewProduct } from "../../Apis/FakeStoreProdApis";
 import { useNavigate } from "react-router-dom";
 export default function ProductDetails() {
@@ -12,12 +11,14 @@ export default function ProductDetails() {
   const[product,setProduct] = useState(null);
 const [query] = useSearchParams()
 const navigate = useNavigate()
- const{userToken}=useContext(userContext);
+ const{user}=useContext(userContext);
 
- console.log(userToken);
+
+
+ console.log(user);
  //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWFhIiwiaWQiOjEzLCJpYXQiOjE3MTYwMjQ5MzV9.1Vj5ekt9jSBCyoG-fIGewA_1NiMBObEC3dKeR2U3HWs";
- const decoded = jwtDecode(userToken);
- console.log('Decoded token is :', decoded.id);
+ /* const decoded = jwtDecode(user); */
+ console.log('Decoded token is :', user.id);
 
 
 
@@ -34,10 +35,10 @@ useEffect(()=>{
  const addToCart=async()=>{
   console.log('hiba');
   const response =await axios.put(addNewProduct(),{
-    userId : decoded.id ,
+    userId : user.id ,
     productId :product.id
   })
-  navigate('/cart')
+  navigate(`/cart?id=${user.id}`)
   console.log('response',response);
 } 
 
@@ -62,7 +63,7 @@ useEffect(()=>{
           <div class="buttons">
             <button onClick={()=>addToCart()} class="button1">Add to cart</button>
           </div>
-          <Link to='/cart' class="button2">Go to cart</Link>
+          <Link to={`/cart?id=${user.id}` }class="button2">Go to cart</Link>
     
         </div>
       </div>
