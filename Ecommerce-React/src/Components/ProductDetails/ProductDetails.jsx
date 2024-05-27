@@ -12,7 +12,7 @@ export default function ProductDetails() {
 const [query] = useSearchParams()
 const navigate = useNavigate()
  const{user}=useContext(userContext);
-
+const cartId = query.get('id');
 
 
  console.log(user);
@@ -38,7 +38,7 @@ useEffect(()=>{
     userId : user.id ,
     productId :product.id
   })
-  navigate(`/cart?id=${user.id}`)
+  navigate(`/cart?id=${cartId}`)
   console.log('response',response);
 } 
 
@@ -63,7 +63,7 @@ useEffect(()=>{
           <div class="buttons">
             <button onClick={()=>addToCart()} class="button1">Add to cart</button>
           </div>
-          <Link to={`/cart?id=${user.id}` }class="button2">Go to cart</Link>
+          <Link to={`/cart?id=${cartId}` }class="button2">Go to cart</Link>
     
         </div>
       </div>

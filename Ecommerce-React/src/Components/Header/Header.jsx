@@ -17,12 +17,21 @@ import {
 import { useCookies } from 'react-cookie';
 import { userContext } from '../context/UserContext';
 import axios from 'axios';
-
+import { getUserCart } from '../../Apis/FakeStoreProdApis';
+import { cartContext } from '../context/CartContext';
 
 function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   const[token , setToken , removeToken] = useCookies(['jwt-token']);
-  console.log('token is ', token);
+  const{cart,setCart}=useContext(cartContext);
+
+  async function getCartDetails(userId){
+   const response = await axios.get(getUserCart(userId));
+   console.log(response.data[0]);
+   setCart(response.data[0]);
+  }
+
+console.log(cart);
 
   const toggle = () => setIsOpen(!isOpen);
    const{user,setUser}=useContext(userContext);
@@ -34,9 +43,11 @@ function Header(props) {
            }
 
  useEffect(()=>{
-  console.log('idhqar', user);
+  console.log('user', user);
+    getCartDetails(user.id);
    },[token])
                      
+
 
   return (
     <div>
@@ -51,7 +62,7 @@ function Header(props) {
                 Options
               </DropdownToggle>
       <DropdownMenu end>
-                <DropdownItem>Option 1</DropdownItem>
+      {cart && cart.products &&  <DropdownItem>{`Cart (${cart.products.length})` }  </DropdownItem>}
                 <DropdownItem>Option 2</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
